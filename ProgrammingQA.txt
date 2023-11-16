@@ -6,11 +6,11 @@
 	
 (Q) max salary in each department?
 
-	list.stream().collect(Collectors.groupingBy(
-												e->e.getDept,
-												Comparator.collectingAndthen(Collector.MaxBy(comparator.comparingInt(e->e.getSalary))),
-												Optional::get
-												));
+list.stream().collect(Collectors.groupingBy(
+				e->e.getDept,
+				Comparator.collectingAndthen(Collector.MaxBy(comparator.comparingInt(e->e.getSalary))),
+				Optional::get
+				));
 											
 
 ===============================================================================
