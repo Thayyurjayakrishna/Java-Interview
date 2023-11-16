@@ -1,0 +1,56 @@
+(Q) Find the sum of square of, all even numbers {1,2,3,4,5,6} using java 8?
+    
+	List<Integer> asList = Arrays.asList(1,2,3,4,5,6);
+    asList.stream().filter(i->i%2==0).forEach(i->System.out.println(i*i));
+	
+	
+(Q) max salary in each department?
+
+	list.stream().collect(Collectors.groupingBy(
+												e->e.getDept,
+												Comparator.collectingAndthen(Collector.MaxBy(comparator.comparingInt(e->e.getSalary))),
+												Optional::get
+												));
+											
+
+===============================================================================
+(Q) what are intermediate and terminal operations?
+
+Intermediate Operations:-
+ Intermediate operations are operations that transform a stream into another stream. 
+ Intermediate operations are lazy, meaning they don't process the entire stream at once but rather operate on elements as they flow through the stream pipeline. 
+ 1. filter(predicate<T> p)
+ List<String> result = myList.stream()
+                            .filter(s -> s.length() > 3)
+                            .collect(Collectors.toList());
+ 2.map(Function<T> f):
+ List<Integer> result = myList.stream()
+                             .map(String::length)
+                             .collect(Collectors.toList());
+ 3.distinct():
+ List<Integer> result = myList.stream()
+                             .distinct()
+                             .collect(Collectors.toList());
+ 4.sorted():
+ List<Integer> result = myList.stream()
+                             .sorted()
+                             .collect(Collectors.toList());
+
+Terminal Operations:-
+ Terminal operations are operations that produce a result.
+ 1.collect(Collector<,,> c):
+ List<String> result = myList.stream()
+                            .filter(s -> s.length() > 3)
+                            .collect(Collectors.toList());
+ 2.forEach(Consumer<T> c):
+ myList.stream()
+      .forEach(System.out::println);
+ 3.count():
+ long count = myList.stream()
+                   .filter(s -> s.length() > 3)
+                   .count();
+ 4.AnyMatch():
+ boolean anyMatch = myList.stream()
+                         .anyMatch(s -> s.startsWith("A"));
+======================================================================================
+
